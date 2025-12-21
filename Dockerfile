@@ -1,8 +1,9 @@
 FROM bastilimbach/docker-magicmirror:latest
 
-WORKDIR /opt/magic_mirror
+# Wir wechseln in das Verzeichnis, das das Image vorgibt
+WORKDIR /opt/magicmirror
 
-# Wir kopieren nur deine config.js in den richtigen Ordner
-COPY config.js /opt/magic_mirror/config/config.js
+# Wir kopieren die Datei genau dorthin, wo das Image sie sucht
+COPY config.js /opt/magicmirror/config/config.js
 
 EXPOSE 8080
