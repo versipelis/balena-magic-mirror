@@ -1,5 +1,5 @@
 var config = {
-  address: "192.168.178.177",
+  address: "0.0.0.0",
   port: 8080,
   basePath: "/",
   ipWhitelist: [], 
@@ -30,3 +30,4 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
