@@ -1,17 +1,18 @@
-FROM balenalib/raspberry-pi-debian:bookworm
+# Wir nehmen ein fertiges Node-Image (statt Debian selbst zu basteln)
+FROM node:18-bookworm-slim
 
-# Nur das Nötigste installieren
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl git nodejs npm && \
-    rm -rf /var/lib/apt/lists/*
+# Nur Git installieren, um den Code zu holen
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/magic_mirror
 
-# MagicMirror klonen und NUR die Kern-Abhängigkeiten installieren
-RUN git clone --depth 1 https://github.com/MichMich/MagicMirror.git . && \
-    npm install --only=prod --unsafe-perm --ignore-scripts
+# MagicMirror holen
+RUN git clone --depth 1 https://github.com/MichMich/MagicMirror.git .
 
-# Wir nutzen erst mal die Standard-Beispiel-Konfiguration
+# Installation ohne Scripte und ohne Electron-Ballast
+RUN npm install --omit=dev --ignore-scripts
+
+# Beispiel-Konfiguration nutzen
 RUN cp config/config.js.sample config/config.js
 
 EXPOSE 8080
