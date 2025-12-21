@@ -1,10 +1,11 @@
-# Wir nutzen ein fertiges Image von einem Docker-Experten (bastilimbach)
 FROM bastilimbach/docker-magicmirror:latest
 
-# Wir setzen das Arbeitsverzeichnis auf das des fertigen Images
 WORKDIR /opt/magic_mirror
 
-# Optional: Falls du später deine eigene Config nutzen willst
-# COPY config.js /opt/magic_mirror/config/config.js
+# 1. Das Ecowitt Modul einfach nur runterladen (kein npm install nötig, da das Image oft schon viel mitbringt)
+RUN cd modules && git clone --depth 1 https://github.com/vincep5/MMM-Ecowitt.git
+
+# 2. Deine eigene config.js von GitHub in den Container kopieren
+COPY config.js /opt/magic_mirror/config/config.js
 
 EXPOSE 8080
