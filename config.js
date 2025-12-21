@@ -1,58 +1,32 @@
 var config = {
-  address: "192.168.178.177", // Erlaubt Zugriff von anderen Geräten im WLAN
+  address: "192.168.178.177",
   port: 8080,
   basePath: "/",
-  ipWhitelist: [], // Erlaubt jedem Gerät im Netzwerk den Zugriff
-
+  ipWhitelist: [], 
   language: "de",
   locale: "de-DE",
-  logLevel: ["INFO", "LOG", "WARN", "ERROR"],
-  timeFormat: 24,
-  units: "metric",
+  useSeconds: false,
 
   modules: [
     {
-      module: "alert", // Wichtig für Systemmeldungen
+      module: "alert",
     },
     {
       module: "clock",
-      position: "top_left", // Große Uhrzeit oben links
-      config: {
-        displayType: "both",
-        showDate: true,
-        showWeek: false,
-      }
+      position: "top_left"
     },
     {
-      module: "MMM-Ecowitt",
-      position: "top_right", // Deine Wetterdaten oben rechts
+      module: "weather",
+      position: "top_right",
       config: {
-        port: 3000,          // Der Port, den wir im Dockerfile geöffnet haben
-        path: "/ecowitt",    // Diesen Pfad musst du in der Ecowitt App angeben
-        units: "metric",
-        showIndoor: true,    // Zeigt deine Innensensoren
-        showOutdoor: true,   // Zeigt deine Außensensoren
-        showLastUpdate: true
-      }
-    },
-    {
-      module: "newsfeed",
-      position: "bottom_bar", // Ein kleiner Ticker für Nachrichten
-      config: {
-        feeds: [
-          {
-            title: "Tagesschau",
-            url: "https://www.tagesschau.de/infoservice/rss/tagesschau-gesamt/index.xml"
-          }
-        ],
-        showSourceTitle: true,
-        showPublishDate: true,
-        broadcastNewsFeeds: true,
-        broadcastNewsUpdates: true
+        weatherProvider: "openweathermap",
+        type: "current",
+        location: "Berlin",
+        locationID: "2950159", // Beispiel ID
+        apiKey: "YOUR_FREE_OPENWEATHER_API_KEY" // Kann erst mal leer bleiben
       }
     }
   ]
 };
 
-/*************** DO NOT EDIT THE LINE BELOW ***************/
 if (typeof module !== "undefined") { module.exports = config; }
