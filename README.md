@@ -12,6 +12,8 @@ Create a [free balenaCloud account](https://dashboard.balena-cloud.com/signup?) 
 
 [![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/versipelis/balena-magic-mirror)
 
+
+
 Initially the display may be distorted because the GPU memory default is too low. In your "Device Configuration" tab in the balenaCloud dashboard, click "activate" for "Define device GPU memory in megabytes." and add the value 192 (or higher). The device will reboot and the display should correct itself.
 
 ## Configuration
