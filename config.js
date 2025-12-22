@@ -8,6 +8,14 @@ var config = {
     {
       module: "clock",
       position: "top_left"
+    },
+    {
+      module: "MMM-Ecowitt",
+      position: "top_right",
+      config: {
+        port: 3000,
+        path: "/ecowitt"
+      }
     }
   ]
 };
