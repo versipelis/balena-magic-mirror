@@ -1,23 +1,26 @@
 FROM balenalib/raspberrypi3-node:18-bookworm-run
 
-# Git installieren (wichtig für spätere Module)
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git wget unzip dos2unix python3 build-essential && rm -rf /var/lib/apt/lists/*
 
-# Arbeitsverzeichnis festlegen
 WORKDIR /usr/src/app
 
-# MagicMirror Core herunterladen und entpacken
-RUN curl -L https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.tar.gz | tar xz --strip-components=1
+# MagicMirror sauber inklusive aller Dateien laden
+RUN wget https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.zip && \
+    unzip v2.25.0.zip && \
+    mv MagicMirror-2.25.0/* . && \
+    rm -rf MagicMirror-2.25.0 v2.25.0.zip
 
-# Nur die notwendigen Abhängigkeiten installieren (ohne Dev-Tools, spart Platz)
-RUN npm install --omit=dev --ignore-scripts
+# WICHTIG: Erst die Abhängigkeiten installieren, bevor wir Module hinzufügen
+RUN npm install --include=dev
 
-# DEINE config.js von GitHub direkt in den richtigen Ordner kopieren
-# Da wir keine Volumes mehr in der docker-compose haben, wird diese Datei jetzt benutzt!
+# Ecowitt Modul hinzufügen
+RUN cd modules && \
+    git clone --depth 1 https://github.com/vincep5/MMM-Ecowitt.git && \
+    cd MMM-Ecowitt && \
+    npm install --omit=dev
+
 COPY config.js ./config/config.js
+RUN dos2unix ./config/config.js
 
-# Ports öffnen
-EXPOSE 8080
-
-# Den Server-Modus starten
+EXPOSE 8080 3000
 CMD ["node", "serveronly"]
