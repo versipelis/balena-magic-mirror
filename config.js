@@ -10,11 +10,15 @@ var config = {
       position: "top_left"
     },
     {
-      module: "MMM-Ecowitt",
+      module: "weather",
       position: "top_right",
+      header: "Wettervorhersage Fornsbach",
       config: {
-        port: 3000,
-        path: "/ecowitt"
+        weatherProvider: "openweathermap",
+        type: "forecast", 
+        location: "Murrhardt,DE", 
+        locationID: "2869152", // ID für Murrhardt (inkl. Fornsbach)
+        apiKey: "9e5482296f1028baf01197b6e80a5b6d"
       }
     }
   ]
