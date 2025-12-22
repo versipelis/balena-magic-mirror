@@ -4,19 +4,19 @@ RUN apt-get update && apt-get install -y git wget unzip dos2unix python3 build-e
 
 WORKDIR /usr/src/app
 
-# MagicMirror sauber inklusive aller Dateien laden
+# MagicMirror Core laden
 RUN wget https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.zip && \
     unzip v2.25.0.zip && \
     mv MagicMirror-2.25.0/* . && \
     rm -rf MagicMirror-2.25.0 v2.25.0.zip
 
-# WICHTIG: Erst die Abhängigkeiten installieren, bevor wir Module hinzufügen
+# Core Abhängigkeiten installieren
 RUN npm install --include=dev
 
-# Ecowitt Modul hinzufügen
-RUN cd modules && \
-    git clone --depth 1 https://github.com/vincep5/MMM-Ecowitt.git && \
-    cd MMM-Ecowitt && \
+# Ecowitt Modul - Der Fix für Fehler 128 (Löschen falls vorhanden, dann klonen)
+RUN rm -rf modules/MMM-Ecowitt && \
+    git clone --depth 1 https://github.com/vincep5/MMM-Ecowitt.git modules/MMM-Ecowitt && \
+    cd modules/MMM-Ecowitt && \
     npm install --omit=dev
 
 COPY config.js ./config/config.js
