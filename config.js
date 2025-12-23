@@ -1,9 +1,10 @@
 var config = {
   address: "0.0.0.0",
   port: 8080,
-  ipWhitelist: [],
+  ipWhitelist: [], 
   language: "de",
   locale: "de-DE",
+
   modules: [
     {
       module: "clock",
@@ -12,16 +13,30 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Wettervorhersage Fornsbach",
+      header: "Wettervorhersage Murrhardt",
       config: {
         weatherProvider: "openweathermap",
-        type: "forecast", 
-        location: "Murrhardt,DE", 
-        locationID: "2867431", // ID für Murrhardt (inkl. Fornsbach)
-        apiKey: "9e5482296f1028baf01197b6e80a5b6d"
+        type: "forecast",
+        location: "Murrhardt",
+        locationID: "2867431", // Die korrigierte ID für Murrhardt
+        apiKey: "9e5482296f1028baf01197b6e80a5b6d", // <--- DEIN KEY HIER
+        apiVersion: "2.5",
+        units: "metric"
+      }
+    },
+    {
+      module: "MMM-FOSHKplugin-PWS-Observations",
+      position: "bottom_left",
+      header: "Ecowitt Station Fornsbach",
+      config: {
+        serverPort: 3000,
+        units: "metric",
+        showInternal: true,
+        timestamp: true,
+        ignoredKeys: ["uv", "solarradiation"]
       }
     }
   ]
 };
-if (typeof module !== "undefined") { module.exports = config; }
 
+if (typeof module !== "undefined") { module.exports = config; }
