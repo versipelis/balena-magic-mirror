@@ -13,8 +13,15 @@ RUN wget https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.zip &
 # Core-Abhängigkeiten installieren
 RUN npm install --include=dev
 
+# JETZT NEU: Ecowitt Modul sicher installieren
+RUN rm -rf modules/MMM-Ecowitt && \
+    git clone --depth 1 https://github.com/vincep5/MMM-Ecowitt.git modules/MMM-Ecowitt && \
+    cd modules/MMM-Ecowitt && \
+    npm install --omit=dev
+
 COPY config.js ./config/config.js
 RUN dos2unix ./config/config.js
 
-EXPOSE 8080
+# Port 3000 für die Ecowitt-Station öffnen
+EXPOSE 8080 3000
 CMD ["node", "serveronly"]
