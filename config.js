@@ -17,10 +17,11 @@ var config = {
         weatherProvider: "openweathermap",
         type: "forecast", 
         location: "Murrhardt,DE", 
-        locationID: "2869152", // ID für Murrhardt (inkl. Fornsbach)
+        locationID: "2867431", // ID für Murrhardt (inkl. Fornsbach)
         apiKey: "9e5482296f1028baf01197b6e80a5b6d"
       }
     }
   ]
 };
 if (typeof module !== "undefined") { module.exports = config; }
+
