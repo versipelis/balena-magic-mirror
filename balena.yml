@@ -1,2 +1,3 @@
-version: 1.1.0
-type: sw.application
+name: "balena-magic-mirror"
+type: sw.stack
+version: "1.1.0"
