@@ -31,12 +31,18 @@ var config = {
       config: {
         serverPort: 3000,
         units: "metric",
-        showInternal: true,
-        timestamp: true,
-        ignoredKeys: ["uv", "solarradiation"]
+        // NEU: Weiterleitung an AWEKAS aktivieren
+        forwardEnable: true,
+        forwardHost: "ws.awekas.at",
+        forwardPort: 80,
+        forwardPath: "/weatherstation/updateweatherstation.php?", // Der Pfad aus deinem Screenshot
+        forwardID: "Noxious", // Deine ID aus dem Screenshot
+        forwardPassword: "dpbRTV6MZp7-WzF", // Dein Key aus dem Screenshot
+        forwardType: "Wunderground" 
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
