@@ -31,18 +31,22 @@ var config = {
       config: {
         serverPort: 3000,
         units: "metric",
-        // NEU: Weiterleitung an AWEKAS aktivieren
+        // WICHTIG: Wir schalten den Cloud-Abruf aus, da wir lokal senden
+        externalSource: "", 
+        
+        // Deine Weiterleitung bleibt bestehen
         forwardEnable: true,
         forwardHost: "ws.awekas.at",
         forwardPort: 80,
-        forwardPath: "/weatherstation/updateweatherstation.php?", // Der Pfad aus deinem Screenshot
-        forwardID: "Noxious", // Deine ID aus dem Screenshot
-        forwardPassword: "dpbRTV6MZp7-WzF", // Dein Key aus dem Screenshot
-        forwardType: "Wunderground" 
+        forwardPath: "/weatherstation/updateweatherstation.php?",
+        forwardID: "Noxious", 
+        forwardPassword: "dpbRTV6MZp7-WzF",
+        forwardType: "Wunderground"
       }
-    }
+    },
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
