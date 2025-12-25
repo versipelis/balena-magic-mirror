@@ -32,7 +32,7 @@ var config = {
         serverPort: 3000,
         units: "metric",
         // Deaktiviert den Versuch, Daten aus dem Internet zu laden:
-        externalSource: "", 
+        externalSource: "null", 
         pwsIdentifier: "", 
         
         // Die Weiterleitung zu AWEKAS:
@@ -49,6 +49,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
