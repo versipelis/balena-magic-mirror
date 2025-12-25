@@ -5,7 +5,8 @@ services:
     build: .
     restart: always
     network_mode: host
-
+    environment:
+      - TZ=Europe/Berlin
   browser:
     image: balenablocks/browser
     privileged: true
