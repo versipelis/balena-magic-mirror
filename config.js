@@ -31,10 +31,11 @@ var config = {
       config: {
         serverPort: 3000,
         units: "metric",
-        // WICHTIG: Wir schalten den Cloud-Abruf aus, da wir lokal senden
+        // Deaktiviert den Versuch, Daten aus dem Internet zu laden:
         externalSource: "", 
+        pwsIdentifier: "", 
         
-        // Deine Weiterleitung bleibt bestehen
+        // Die Weiterleitung zu AWEKAS:
         forwardEnable: true,
         forwardHost: "ws.awekas.at",
         forwardPort: 80,
@@ -43,10 +44,11 @@ var config = {
         forwardPassword: "dpbRTV6MZp7-WzF",
         forwardType: "Wunderground"
       }
-    },
+    }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
