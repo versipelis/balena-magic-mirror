@@ -31,15 +31,19 @@ var config = {
       config: {
         serverPort: 3000,
         units: "metric",
-        pwsType: "Wunderground", 
-        externalSource: null, // Verhindert den Versuch, Cloud-Daten zu laden
-        forwardEnable: false  // Wir schalten die Weiterleitung zum Testen AUS
+        pwsType: "Wunderground",
+        externalSource: "", // Leerer String statt null probieren
+        pwsIdentifier: "Noxious",
+        // Schalte alles andere erstmal aus
+        forwardEnable: false,
+        debug: true // Aktiviert (hoffentlich) mehr Logs
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
