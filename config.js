@@ -31,24 +31,16 @@ var config = {
       config: {
         serverPort: 3000,
         units: "metric",
-        // Deaktiviert den Versuch, Daten aus dem Internet zu laden:
-        externalSource: "null", 
-        pwsIdentifier: "", 
-        
-        // Die Weiterleitung zu AWEKAS:
-        forwardEnable: true,
-        forwardHost: "ws.awekas.at",
-        forwardPort: 80,
-        forwardPath: "/weatherstation/updateweatherstation.php?",
-        forwardID: "Noxious", 
-        forwardPassword: "dpbRTV6MZp7-WzF",
-        forwardType: "Wunderground"
+        pwsType: "Wunderground", 
+        externalSource: null, // Verhindert den Versuch, Cloud-Daten zu laden
+        forwardEnable: false  // Wir schalten die Weiterleitung zum Testen AUS
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
