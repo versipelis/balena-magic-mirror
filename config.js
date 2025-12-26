@@ -32,14 +32,15 @@ var config = {
         serverPort: 3000,
         units: "metric",
         pwsType: "Wunderground",
-        // Laut Forum: Versuche 'pws' oder lass es komplett weg, 
-        // damit der lokale Server Vorrang bekommt.
-        externalSource: "pws", 
-        pwsIdentifier: "Noxious", // Muss mit deiner Stations-ID übereinstimmen
+        // Wir setzen hier 'local' ein, damit das Modul nicht 'Wunderground' als Quelle wählt
+        externalSource: "local", 
+        pwsIdentifier: "Noxious",
         
-        // WICHTIG: Wenn du AWEKAS nutzen willst, muss das hier wieder rein,
-        // aber erst wenn die lokale Anzeige läuft!
-        forwardEnable: false, 
+        // Deaktiviere die API-Suche durch Dummy-Werte
+        apiKey: "none", 
+        stationId: "none",
+    
+        forwardEnable: false,
         debug: true
       }
     }
@@ -47,6 +48,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
