@@ -19,7 +19,7 @@ var config = {
         type: "forecast",
         location: "Murrhardt",
         locationID: "2867431", // Die korrigierte ID für Murrhardt
-        apiKey: "9e5482296f1028baf01197b6e80a5b6d", // <--- DEIN KEY HIER
+        apiKey: "", // <--- DEIN KEY HIER
         apiVersion: "2.5",
         units: "metric"
       }
@@ -48,6 +48,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
