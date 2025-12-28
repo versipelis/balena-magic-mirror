@@ -23,6 +23,9 @@ RUN cd modules/MMM-FOSHKplugin-PWS-Observations && \
 # Template kopieren (Wichtig: Datei muss lokal config.js.template heißen!)
 COPY config.js.template ./config/config.js.template
 
+# Kopiere den Provider in das System
+COPY ecowittlocal.js modules/default/weather/providers/ecowittlocal.js
+
 EXPOSE 8080 3000
 
 # Variablen ersetzen und Server starten
