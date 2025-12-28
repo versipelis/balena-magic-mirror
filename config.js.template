@@ -13,7 +13,7 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Wettervorhersage Murrhardt",
+      header: "Wettervorhersage",
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
@@ -44,3 +44,4 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
