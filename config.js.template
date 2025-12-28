@@ -11,26 +11,22 @@ var config = {
       position: "top_left"
     },
     {
-      module: "weather",
+      module: "MMM-EcowittLocal",
       position: "top_right",
-      header: "Wetter Live (Fornsbach)",
+      header: "Live vom Dach",
       config: {
-        weatherProvider: "ecowittlocal",
-        type: "current", // Nur aktuelle Daten von der Station
-        units: "metric",
-        initialLoadDelay: 1000,
-        updateInterval: 30000 // Alle 30 Sekunden aktualisieren
+        deviceIP: "192.168.178.98",
+        updateInterval: 30000
       }
     },
     {
       module: "weather",
       position: "top_right",
-      header: "Vorhersage (OpenWeather)",
+      header: "Vorhersage",
       config: {
         weatherProvider: "openweathermap",
-        type: "forecast", // Vorhersage kommt weiterhin aus dem Netz
+        type: "forecast",
         location: "Murrhardt",
-        locationID: "2867431",
         apiKey: "${OPENWEATHER_API_KEY}"
       }
     }
@@ -38,5 +34,6 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
