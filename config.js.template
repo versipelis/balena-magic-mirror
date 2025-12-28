@@ -13,13 +13,13 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Wettervorhersage Murrhardt",
+      header: "Wettervorhersage ",
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
         location: "Murrhardt",
-        locationID: "2867431", // Die korrigierte ID für Murrhardt
-        apiKey: "", // <--- DEIN KEY HIER
+        locationID: "2867431",
+        apiKey: "${OPENWEATHER_API_KEY}", // <-- Platzhalter
         apiVersion: "2.5",
         units: "metric"
       }
@@ -48,6 +48,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
