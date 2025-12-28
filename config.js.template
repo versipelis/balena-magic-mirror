@@ -13,35 +13,30 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Wettervorhersage",
+      header: "Wetter Live (Fornsbach)",
       config: {
-        weatherProvider: "openweathermap",
-        type: "forecast",
-        location: "Murrhardt",
-        locationID: "2867431",
-        apiKey: "${OPENWEATHER_API_KEY}", 
-        apiVersion: "2.5",
-        units: "metric"
+        weatherProvider: "ecowittlocal",
+        type: "current", // Nur aktuelle Daten von der Station
+        units: "metric",
+        initialLoadDelay: 1000,
+        updateInterval: 30000 // Alle 30 Sekunden aktualisieren
       }
     },
     {
-      module: "MMM-FOSHKplugin-PWS-Observations",
-      position: "bottom_left",
-      header: "Ecowitt Station Fornsbach",
+      module: "weather",
+      position: "top_right",
+      header: "Vorhersage (OpenWeather)",
       config: {
-        serverPort: 3000,
-        units: "metric",
-        pwsType: "Wunderground",
-        externalSource: "local", 
-        pwsIdentifier: "Noxious",
-        apiKey: "none", 
-        stationId: "none",
-        forwardEnable: false,
-        debug: true
+        weatherProvider: "openweathermap",
+        type: "forecast", // Vorhersage kommt weiterhin aus dem Netz
+        location: "Murrhardt",
+        locationID: "2867431",
+        apiKey: "${OPENWEATHER_API_KEY}"
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
