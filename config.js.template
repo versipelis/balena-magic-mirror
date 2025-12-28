@@ -13,13 +13,13 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Wettervorhersage ",
+      header: "Wettervorhersage Murrhardt",
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
         location: "Murrhardt",
         locationID: "2867431",
-        apiKey: "${OPENWEATHER_API_KEY}", // <-- Platzhalter
+        apiKey: "${OPENWEATHER_API_KEY}", 
         apiVersion: "2.5",
         units: "metric"
       }
@@ -32,14 +32,10 @@ var config = {
         serverPort: 3000,
         units: "metric",
         pwsType: "Wunderground",
-        // Wir setzen hier 'local' ein, damit das Modul nicht 'Wunderground' als Quelle wählt
         externalSource: "local", 
         pwsIdentifier: "Noxious",
-        
-        // Deaktiviere die API-Suche durch Dummy-Werte
         apiKey: "none", 
         stationId: "none",
-    
         forwardEnable: false,
         debug: true
       }
@@ -48,13 +44,3 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
-
-
-
-
-
-
-
-
-
-
