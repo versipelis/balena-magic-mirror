@@ -23,8 +23,8 @@ Module.register("MMM-EcowittLocal", {
         wrapper.innerHTML = `
             <div class="large bright">${this.dataLocal.temp}°C</div>
             <div class="small dimmed">
-                <span>Feuchte: ${this.dataLocal.hum}%</span> | 
-                <span>Wind: ${this.dataLocal.wind} km/h</span>
+                <span>Feuchte: ${this.dataLocal.hum}</span> | 
+                <span>Wind: ${this.dataLocal.wind}</span>
             </div>
         `;
         return wrapper;
