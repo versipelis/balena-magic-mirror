@@ -1,6 +1,6 @@
 FROM balenalib/raspberrypi3-node:18-bookworm-run
 
-# gettext-base wird für den Befehl 'envsubst' benötigt
+# gettext-base für envsubst (Template-System)
 RUN apt-get update && apt-get install -y git wget curl unzip dos2unix python3 build-essential gettext-base && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
@@ -15,10 +15,15 @@ RUN npm install --include=dev
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
     curl -L https://github.com/git-olicat/MMM-FOSHKplugin-PWS-Observations/archive/refs/heads/main.tar.gz | tar xz -C modules/MMM-FOSHKplugin-PWS-Observations --strip-components=1
 
-# Kopiere die Template-Datei anstatt der config.js
+# FEHLERBEHEBUNG: 'request' manuell im Modul-Ordner installieren
+RUN cd modules/MMM-FOSHKplugin-PWS-Observations && \
+    npm install request && \
+    npm install --omit=dev
+
+# Template kopieren (Wichtig: Datei muss lokal config.js.template heißen!)
 COPY config.js.template ./config/config.js.template
 
 EXPOSE 8080 3000
 
-# Der CMD-Befehl ersetzt jetzt die Variablen in der Vorlage und startet dann den Server
+# Variablen ersetzen und Server starten
 CMD envsubst < ./config/config.js.template > ./config/config.js && node serveronly
