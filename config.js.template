@@ -27,6 +27,7 @@ var config = {
         weatherProvider: "openweathermap",
         type: "forecast",
         location: "Murrhardt",
+        locationID: "2867431", // Kannst du absolut drin lassen!
         apiKey: "${OPENWEATHER_API_KEY}"
       }
     }
@@ -34,6 +35,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
