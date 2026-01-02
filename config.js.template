@@ -25,8 +25,6 @@ var config = {
       header: "Vorhersage Fornsbach",
       config: {
         apikey: "${OPENWEATHER_API_KEY}", // Dein Key wird übernommen
-        location: "Fornsbach",
-        locationID: "3220783",
         latitude: 48.980300,               // Koordinaten für Fornsbach
         longitude: 9.639666,
         language: "de",
@@ -53,6 +51,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
