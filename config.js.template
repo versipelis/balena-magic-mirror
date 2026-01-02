@@ -20,24 +20,21 @@ var config = {
       }
     },
     {
-      module: "MMM-OpenWeatherForecast",
+      module: "MMM-OpenWeatherMapForecast",
       position: "top_right",
       header: "Vorhersage Fornsbach",
       config: {
-        apikey: "158eb5bdc26e6c484b6c998c61376a9a",
+        apikey: "${OPENWEATHER_API_KEY}", // Oder direkt dein Key zum Testen
         latitude: 48.980300,
         longitude: 9.639666,
-        endpoint: "https://api.openweathermap.org/data/3.0/onecall", // Ganz wichtig!
+        endpoint: "https://api.openweathermap.org/data/3.0/onecall",
         language: "de",
         units: "metric",
         maxDays: 3,
         showDailyForecast: true,
         showHourlyForecast: false,
-        showDailySection: true,
         showPrecipitationProbability: true,
         showPrecipitationAmount: true,
-        concise: false,
-        forecastLayout: "table",
         colored: true
       }
     }
@@ -45,5 +42,6 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
