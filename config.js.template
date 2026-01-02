@@ -20,30 +20,38 @@ var config = {
       }
     },
     {
-      module: "weather",
+      module: "MMM-OpenWeatherForecast",
       position: "top_right",
       header: "Vorhersage Fornsbach",
       config: {
-        weatherProvider: "openweathermap",
-        type: "forecast",
+        apikey: "${OPENWEATHER_API_KEY}", // Dein Key wird übernommen
         location: "Fornsbach",
-        locationID: "3220783", // Kannst du absolut drin lassen!
-        apiKey: "${OPENWEATHER_API_KEY}",
+        locationID: "3220783",
+        language: "de",
+        units: "metric",
+        maxDays: 3,                      // Wie gewünscht: 3 Tage
+        showDailyForecast: true,
+        showHourlyForecast: false,       // Wir nutzen stattdessen die Tagesabschnitte
         
-        // DIESE ZEILE IST ENTSCHEIDEND:
-        appendLocationNameToHeader: false, 
+        // DETAIL-EINSTELLUNGEN FÜR DEINE WÜNSCHE:
+        showDailySection: true,          // Aktiviert die Sektion pro Tag
+        showPrecipitationProbability: true, // Regenwahrscheinlichkeit in %
+        showPrecipitationAmount: true,      // Regenmenge in mm
         
-        // Für deine zweite Frage (Regenwahrscheinlichkeit):
-    
-        showPrecipitationAmount: true,
-        showPrecipitationProbability: true,
-        maxNumberOfDays: 3,
+        // TAGESABSCHNITTE (Morgens, Mittags, Abends, Nachts):
+        concise: false,                  // 'false' zeigt die detaillierte Tabelle
+        forecastLayout: "table",         // Tabellenansicht ist übersichtlicher
+        
+        // Optik:
+        colored: true,                   // Schöne farbige Icons
+        mainIconSize: 60,
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
