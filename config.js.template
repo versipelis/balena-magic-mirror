@@ -22,7 +22,7 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Vorhersage",
+      header: "Vorhersage Fornsbach",
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
@@ -34,6 +34,8 @@ var config = {
         appendLocationNameToHeader: false, 
         
         // Für deine zweite Frage (Regenwahrscheinlichkeit):
+    
+        showPrecipitationAmount: true,
         showPrecipitationProbability: true,
         maxNumberOfDays: 3,
       }
@@ -42,6 +44,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
