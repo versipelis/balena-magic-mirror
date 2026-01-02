@@ -22,12 +22,13 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Vorhersage Fornsbach,DE", // Hier kannst du deinen Wunschtitel setzen
+      header: "Vorhersage",
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
-        location: "Fornsbach,DE",
-        apiKey: "{OPENWEATHER_API_KEY}",
+        location: "Fornsbach",
+        locationID: "3220783", // Kannst du absolut drin lassen!
+        apiKey: "${OPENWEATHER_API_KEY}",
         
         // DIESE ZEILE IST ENTSCHEIDEND:
         appendLocationNameToHeader: false, 
@@ -41,6 +42,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
