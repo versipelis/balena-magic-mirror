@@ -31,28 +31,35 @@ var config = {
         language: "de",
         units: "metric",
         
-        // Layout-Einstellungen für die rechte Ansicht im Bild:
+        // --- LAYOUT OPTIMIERUNG ---
         forecastLayout: "table",
-        showCurrent: false,      // Deaktiviert den großen Bereich oben
-        showHourly: false,       // Deaktiviert die stündliche Vorhersage (2pm, 4pm...)
-        showDaily: true,         // Aktiviert die Tagesvorhersage (Sat, Sun...)
-        maxDays: 3,              // Wie gewünscht: 3 Tage
+        showCurrent: false,      // Entfernt das große Icon oben
+        showHourly: false,       // Deaktiviert Stunden (1 am, 4 am...)
+        showDaily: true,         // Aktiviert Tage (Sat, Sun, Mon)
+        maxDays: 3,              // Begrenzt auf 3 Tage
         
-        // Details in der Tabelle:
-        showPrecipitationProbability: true, // Die blaue Regenschirm-Spalte
-        showPrecipitationAmount: true,      // Zeigt mm falls gewünscht
-        showWindSpeed: true,                // Die grüne Wind-Spalte im Bild
+        // Erzwinge das Ausblenden der Stunden, falls das Modul sie trotzdem zeigt
+        hourlyForecastInterval: 0, 
+        maxHourliesToShow: 0,
         
-        // Optik:
+        // --- DETAILS ---
+        showPrecipitationProbability: true, 
+        showPrecipitationAmount: true,      
+        showWindSpeed: true,                
+        
+        // --- OPTIK ---
         colored: true,
-        mainIconSize: 60,
-        tableIconSize: 30
+        tableIconSize: 25,       // Etwas kleiner für ein kompakteres Schriftbild
+        label_maximum: "max",    // Optionale Beschriftung für Klarheit
+        label_high: "H",
+        label_low: "L"
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
