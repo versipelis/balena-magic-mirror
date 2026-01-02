@@ -24,31 +24,26 @@ var config = {
       position: "top_right",
       header: "Vorhersage Fornsbach",
       config: {
-        apikey: "158eb5bdc26e6c484b6c998c61376a9a", // Dein Key wird übernommen
-        latitude: 48.980300,               // Koordinaten für Fornsbach
+        apikey: "158eb5bdc26e6c484b6c998c61376a9a",
+        latitude: 48.980300,
         longitude: 9.639666,
+        endpoint: "https://api.openweathermap.org/data/3.0/onecall", // Ganz wichtig!
         language: "de",
         units: "metric",
-        maxDays: 3,                      // Wie gewünscht: 3 Tage
+        maxDays: 3,
         showDailyForecast: true,
-        showHourlyForecast: false,       // Wir nutzen stattdessen die Tagesabschnitte
-        
-        // DETAIL-EINSTELLUNGEN FÜR DEINE WÜNSCHE:
-        showDailySection: true,          // Aktiviert die Sektion pro Tag
-        showPrecipitationProbability: true, // Regenwahrscheinlichkeit in %
-        showPrecipitationAmount: true,      // Regenmenge in mm
-        
-        // TAGESABSCHNITTE (Morgens, Mittags, Abends, Nachts):
-        concise: false,                  // 'false' zeigt die detaillierte Tabelle
-        forecastLayout: "table",         // Tabellenansicht ist übersichtlicher
-        
-        // Optik:
-        colored: true,                   // Schöne farbige Icons
-        mainIconSize: 60,
+        showHourlyForecast: false,
+        showDailySection: true,
+        showPrecipitationProbability: true,
+        showPrecipitationAmount: true,
+        concise: false,
+        forecastLayout: "table",
+        colored: true
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
