@@ -28,36 +28,32 @@ var config = {
         latitude: 48.980300,
         longitude: 9.639666,
         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
-        language: "de",
-        units: "metric",
         
-        // --- NUR TABELLE ANZEIGEN ---
+        // Diese drei müssen im Code alle auf false stehen:
+        showCurrent: false,             // Schaltet Kern-Elemente (Icon/Temp) aus
+        showExtraCurrentDetails: false, // Schaltet die Zeile darunter aus
+        showSummary: false,             // Schaltet den Text aus
+        
+        // Vorhersage-Logik
+        showHourly: false,
+        showDaily: true,
+        maxDays: 3,
         forecastLayout: "table",
-        showCurrent: false,      // Icon und Temp oben aus
-        showSummary: false,      // Text ("Überwiegend bewölkt") aus
-        showExtraCurrentDetails: false, // Wind/Regen im oberen Bereich aus
-        showHourly: false,       
-        showDaily: true,         
-        maxDays: 3,              
         
-        // Sicherheitshalber auf 0 setzen
-        maxHourliesToShow: 0,
+        // Details
+        showPrecipitationProbability: true,
+        showPrecipitationAmount: true,
+        showWindSpeed: true,
         
-        // --- DETAILS IN DER TABELLE ---
-        showPrecipitationProbability: true, 
-        showPrecipitationAmount: true,      
-        showWindSpeed: true,                
-        
-        // --- OPTIK ---
         colored: true,
-        tableIconSize: 25,
-        inlineVariable: true     // Versucht, alles kompakter in einer Zeile zu halten
+        tableIconSize: 25
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
