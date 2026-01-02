@@ -24,7 +24,7 @@ var config = {
       position: "top_right",
       header: "Vorhersage Fornsbach",
       config: {
-        apikey: "${OPENWEATHER_API_KEY}"
+        apikey: "${OPENWEATHER_API_KEY}",
         latitude: 48.980300,
         longitude: 9.639666,
         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
@@ -53,6 +53,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
