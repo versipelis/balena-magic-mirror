@@ -28,19 +28,26 @@ var config = {
         latitude: 48.980300,
         longitude: 9.639666,
         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
+        language: "de",
+        units: "metric",
         
-        // Diese drei müssen im Code alle auf false stehen:
-        showCurrent: false,             // Schaltet Kern-Elemente (Icon/Temp) aus
-        showExtraCurrentDetails: false, // Schaltet die Zeile darunter aus
-        showSummary: false,             // Schaltet den Text aus
+        // --- SEKTIONEN ABSCHALTEN ---
+        showCurrent: false,
+        showExtraCurrentDetails: false,
+        showSummary: false,
+        showHourly: false, 
         
-        // Vorhersage-Logik
-        showHourly: false,
+        // --- STUNDEN-LOGIK ÜBERSCHREIBEN (Wichtig für dein Bild!) ---
+        // Das Modul braucht oft diese expliziten Nullen, um die Stunden-Tabelle zu löschen
+        maxHourliesToShow: 0, 
+        hourlyForecastInterval: 0,
+        
+        // --- TAGES-TABELLE AKTIVIEREN ---
         showDaily: true,
         maxDays: 3,
         forecastLayout: "table",
         
-        // Details
+        // Details in der Tabelle
         showPrecipitationProbability: true,
         showPrecipitationAmount: true,
         showWindSpeed: true,
@@ -53,6 +60,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
