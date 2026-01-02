@@ -27,7 +27,7 @@ var config = {
         weatherProvider: "openweathermap",
         type: "forecast",
         location: "Fornsbach,DE",
-        apiKey: "DEIN_API_KEY",
+        apiKey: "{OPENWEATHER_API_KEY}",
         
         // DIESE ZEILE IST ENTSCHEIDEND:
         appendLocationNameToHeader: false, 
@@ -41,6 +41,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
