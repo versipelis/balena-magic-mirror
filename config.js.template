@@ -31,34 +31,34 @@ var config = {
         language: "de",
         units: "metric",
         
-        // --- LAYOUT OPTIMIERUNG ---
+        // --- NUR TABELLE ANZEIGEN ---
         forecastLayout: "table",
-        showCurrent: false,      // Entfernt das große Icon oben
-        showHourly: false,       // Deaktiviert Stunden (1 am, 4 am...)
-        showDaily: true,         // Aktiviert Tage (Sat, Sun, Mon)
-        maxDays: 3,              // Begrenzt auf 3 Tage
+        showCurrent: false,      // Icon und Temp oben aus
+        showSummary: false,      // Text ("Überwiegend bewölkt") aus
+        showExtraCurrentDetails: false, // Wind/Regen im oberen Bereich aus
+        showHourly: false,       
+        showDaily: true,         
+        maxDays: 3,              
         
-        // Erzwinge das Ausblenden der Stunden, falls das Modul sie trotzdem zeigt
-        hourlyForecastInterval: 0, 
+        // Sicherheitshalber auf 0 setzen
         maxHourliesToShow: 0,
         
-        // --- DETAILS ---
+        // --- DETAILS IN DER TABELLE ---
         showPrecipitationProbability: true, 
         showPrecipitationAmount: true,      
         showWindSpeed: true,                
         
         // --- OPTIK ---
         colored: true,
-        tableIconSize: 25,       // Etwas kleiner für ein kompakteres Schriftbild
-        label_maximum: "max",    // Optionale Beschriftung für Klarheit
-        label_high: "H",
-        label_low: "L"
+        tableIconSize: 25,
+        inlineVariable: true     // Versucht, alles kompakter in einer Zeile zu halten
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
