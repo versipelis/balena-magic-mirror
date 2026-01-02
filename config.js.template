@@ -22,19 +22,26 @@ var config = {
     {
       module: "weather",
       position: "top_right",
-      header: "Vorhersage",
+      header: "Vorhersage Fornsbach,DE", // Hier kannst du deinen Wunschtitel setzen
       config: {
         weatherProvider: "openweathermap",
         type: "forecast",
-        location: "Fornsbach",
-        locationID: "3220783", // Kannst du absolut drin lassen!
-        apiKey: "${OPENWEATHER_API_KEY}"
+        location: "Fornsbach,DE",
+        apiKey: "DEIN_API_KEY",
+        
+        // DIESE ZEILE IST ENTSCHEIDEND:
+        appendLocationNameToHeader: false, 
+        
+        // Für deine zweite Frage (Regenwahrscheinlichkeit):
+        showPrecipitationProbability: true,
+        maxNumberOfDays: 3,
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
