@@ -11,16 +11,15 @@ RUN curl -L https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.ta
 # Core-Abhängigkeiten installieren
 RUN npm install --include=dev
 
-# --- NEU: MMM-OpenWeatherForecast laden ---
-RUN mkdir -p modules/MMM-OpenWeatherForecast && \
-    curl -L https://github.com/jclarke0000/MMM-OpenWeatherForecast/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-OpenWeatherForecast --strip-components=1
+# --- NEU: MMM-OpenWeatherMapForecast (MarcLandis) laden ---
+RUN mkdir -p modules/MMM-OpenWeatherMapForecast && \
+    curl -L https://github.com/MarcLandis/MMM-OpenWeatherMapForecast/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-OpenWeatherMapForecast --strip-components=1
 
-# Abhängigkeiten für das Wetter-Modul installieren
-RUN cd modules/MMM-OpenWeatherForecast && \
+# Abhängigkeiten für das neue Wetter-Modul installieren
+RUN cd modules/MMM-OpenWeatherMapForecast && \
     npm install --omit=dev
-# ------------------------------------------
 
-# Modul MMM-FOSHKplugin laden
+# --- MMM-FOSHKplugin laden ---
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
     curl -L https://github.com/git-olicat/MMM-FOSHKplugin-PWS-Observations/archive/refs/heads/main.tar.gz | tar xz -C modules/MMM-FOSHKplugin-PWS-Observations --strip-components=1
 
