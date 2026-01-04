@@ -30,31 +30,34 @@ var config = {
         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
         language: "de",
         units: "metric",
-    
-        // --- DIESE PARAMETER STEUERN DAS AUSBLENDEN OBEN (gemäß deiner Liste) ---
-        showCurrentConditions: false,      // Schaltet Icon/Temp oben aus
-        showExtraCurrentConditions: false, // Schaltet Wind/Regen oben aus
-        showSummary: false,                // Schaltet den Wettertext aus
-    
-        // --- TABELLEN-LAYOUT FÜR 5 TAGE ---
-        forecastLayout: "table",           //
-        showHourlyForecast: false,         // Schaltet Stunden aus
-        showDailyForecast: true,           // Aktiviert die Tagesliste
-        maxDailiesToShow: 5,               // Erhöht auf 5 Tage
-    
-        // --- DETAILS ---
-        showPrecipitation: true,           // Zeigt Regen-Infos
-        showWind: true,                    // Zeigt Wind-Infos
-        concise: false,                    // Auf false setzen, um mehr Details (mm) zu sehen
-    
-        // --- OPTIK ---
-        colored: true                      //
+
+        // --- WIND-ANZEIGE AUFRÄUMEN ---
+        showWind: true,
+        useKMPH: true,       // Versuch, auf km/h umzustellen
+        concise: true,        // ENTFERNT das "(max ...)" bei der Windgeschwindigkeit
+
+        // --- OBEREN TEIL AUSBLENDEN ---
+        showCurrentConditions: false,
+        showExtraCurrentConditions: false,
+        showSummary: false,
+
+        // --- 5-TAGE-TABELLE ---
+        forecastLayout: "table",
+        showHourlyForecast: false,
+        showDailyForecast: true,
+        maxDailiesToShow: 5,
+
+        // --- WEITERE DETAILS ---
+        showPrecipitation: true,
+        colored: true,
+        tableIconSize: 25
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
