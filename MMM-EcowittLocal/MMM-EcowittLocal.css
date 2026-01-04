@@ -1,5 +1,5 @@
 :root {
-    --ecowitt-cyan: #00d1ff; /* Farbe basierend auf dem Regenschirm-Icon */
+    --ecowitt-cyan: #00d1ff; /* Das Cyan deines Regenschirm-Icons */
 }
 
 .weather-local {
@@ -11,39 +11,40 @@
     margin: 10px 0;
 }
 
-/* Die feinen Skalenstriche */
+/* Die feinen Ticks: Wir machen sie extrem kurz (0.1), damit sie wie Punkte wirken */
 .compass-ring {
     fill: none;
     stroke: var(--ecowitt-cyan);
     stroke-width: 1; 
-    stroke-dasharray: 0.5, 6.55; 
+    stroke-dasharray: 0.1, 3.53; /* Erzeugt viele kleine Punkte entlang des Kreises */
     opacity: 0.4;
 }
 
-/* Der feine durchgehende Kreis */
+/* Der hauchdünne Hintergrundkreis */
 .compass-ring-inner {
     fill: none;
     stroke: var(--ecowitt-cyan);
     stroke-width: 0.5;
-    opacity: 0.2;
+    opacity: 0.15;
 }
 
-/* Die 4 langen Hauptstriche */
+/* Die 4 langen Hauptmarkierungen (N, O, S, W) */
 .comp-tick-long {
     stroke: var(--ecowitt-cyan);
     stroke-width: 1; 
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
-/* Der Pfeil: Gleiche Farbe wie der Kreis, zentriert auf der Bahn */
+/* Der Pfeil: Gleiche Farbe wie die Skala */
 .comp-arrow {
     fill: var(--ecowitt-cyan);
     opacity: 1;
 }
 
+/* Zahlendesign */
 .comp-speed {
     fill: #ffffff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
     text-anchor: middle;
 }
@@ -52,4 +53,5 @@
     fill: #aaaaaa;
     font-size: 10px;
     text-anchor: middle;
+    text-transform: lowercase;
 }
