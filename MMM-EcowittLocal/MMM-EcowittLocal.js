@@ -38,20 +38,17 @@ Module.register("MMM-EcowittLocal", {
         var dir = this.dataLocal.windDir || 0;
         var speed = this.dataLocal.wind || 0;
 
+        // Der Pfeil liegt nun am Rand (y=5) und zeigt zur Mitte (y=20)
         compassWrapper.innerHTML = `
             <svg viewBox="0 0 100 100" width="120" height="120">
                 <circle cx="50" cy="50" r="45" class="compass-ring" />
-                <text x="50" y="15" class="comp-label">N</text>
-                <text x="85" y="53" class="comp-label">O</text>
-                <text x="50" y="92" class="comp-label">S</text>
-                <text x="15" y="53" class="comp-label">W</text>
                 
                 <g transform="rotate(${dir}, 50, 50)">
-                    <path d="M50 22 L56 42 L50 38 L44 42 Z" class="comp-arrow" />
+                    <path d="M50 18 L56 2 L44 2 Z" class="comp-arrow" />
                 </g>
                 
                 <text x="50" y="55" class="comp-speed">${speed}</text>
-                <text x="50" y="70" class="comp-unit">km/h</text>
+                <text x="50" y="72" class="comp-unit">km/h</text>
             </svg>
         `;
         wrapper.appendChild(compassWrapper);
