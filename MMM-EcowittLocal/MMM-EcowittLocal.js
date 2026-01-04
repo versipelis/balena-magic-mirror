@@ -41,10 +41,12 @@ Module.register("MMM-EcowittLocal", {
         // Der Pfeil liegt nun am Rand (y=5) und zeigt zur Mitte (y=20)
         compassWrapper.innerHTML = `
             <svg viewBox="0 0 100 100" width="120" height="120">
-                <circle cx="50" cy="50" r="45" class="compass-ring" />
+                <circle cx="50" cy="50" r="45" class="compass-ring-inner" />
+                
+                <circle cx="50" cy="50" r="45" class="compass-ring" transform="rotate(-90 50 50)" />
                 
                 <g transform="rotate(${dir}, 50, 50)">
-                    <path d="M50 18 L56 2 L44 2 Z" class="comp-arrow" />
+                    <path d="M50 16 L54 2 L46 2 Z" class="comp-arrow" />
                 </g>
                 
                 <text x="50" y="55" class="comp-speed">${speed}</text>
