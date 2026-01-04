@@ -45,8 +45,8 @@ Module.register("MMM-EcowittLocal", {
                 
                 <circle cx="50" cy="50" r="45" class="compass-ring" transform="rotate(-90 50 50)" />
                 
-                <g transform="rotate(${dir}, 50, 50)">
-                    <path d="M50 16 L54 2 L46 2 Z" class="comp-arrow" />
+                <line x1="50" y1="5" x2="50" y2="12" class="comp-tick-thick" /> <line x1="95" y1="50" x2="88" y2="50" class="comp-tick-thick" /> <line x1="50" y1="95" x2="50" y2="88" class="comp-tick-thick" /> <line x1="5" y1="50" x2="12" y2="50" class="comp-tick-thick" /> <g transform="rotate(${dir}, 50, 50)">
+                    <path d="M50 18 L55 4 L45 4 Z" class="comp-arrow" />
                 </g>
                 
                 <text x="50" y="55" class="comp-speed">${speed}</text>
