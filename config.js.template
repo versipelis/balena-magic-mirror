@@ -20,46 +20,45 @@ var config = {
       }
     },
     {
-      module: "MMM-OpenWeatherMapForecast",
-      position: "top_right",
-      header: "Vorhersage Fornsbach",
-      config: {
-        apikey: "${OPENWEATHER_API_KEY}",
-        latitude: 48.980300,
-        longitude: 9.639666,
-        endpoint: "https://api.openweathermap.org/data/3.0/onecall",
-        language: "de",
-        units: "metric",
-        
-        // --- SEKTIONEN ABSCHALTEN ---
-        showCurrent: false,
-        showExtraCurrentDetails: false,
-        showSummary: false,
-        showHourly: false, 
-        
-        // --- STUNDEN-LOGIK ÜBERSCHREIBEN (Wichtig für dein Bild!) ---
-        // Das Modul braucht oft diese expliziten Nullen, um die Stunden-Tabelle zu löschen
-        maxHourliesToShow: 0, 
-        hourlyForecastInterval: 0,
-        
-        // --- TAGES-TABELLE AKTIVIEREN ---
-        showDaily: true,
-        maxDays: 3,
-        forecastLayout: "table",
-        
-        // Details in der Tabelle
-        showPrecipitationProbability: true,
-        showPrecipitationAmount: true,
-        showWindSpeed: true,
-        
-        colored: true,
-        tableIconSize: 25
-      }
-    }
+       module: "MMM-OpenWeatherMapForecast",
+       position: "top_right",
+       header: "Vorhersage Fornsbach",
+       config: {
+         apikey: "${OPENWEATHER_API_KEY}",
+         latitude: 48.980300,
+         longitude: 9.639666,
+         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
+         language: "de",
+         units: "metric",
+         
+         // --- LAYOUT FÜR 5 TAGE ---
+         forecastLayout: "table",
+         showCurrent: false,
+         showExtraCurrentDetails: false,
+         showSummary: false,
+         showHourly: false,
+         showDaily: true,
+         maxDays: 5,               // Geändert von 3 auf 5 Tage
+         
+         // --- DEAKTIVIERUNG DER STUNDEN ---
+         maxHourliesToShow: 0,
+         hourlyForecastInterval: 0,
+         
+         // --- DETAILS ---
+         showPrecipitationProbability: true,
+         showPrecipitationAmount: true,
+         showWindSpeed: true,
+         
+         // --- OPTIK ---
+         colored: true,
+         tableIconSize: 25
+       }
+     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
