@@ -7,29 +7,46 @@
     margin: 10px 0;
 }
 
-/* Der Hauptkreis mit den Strichen */
+/* Die Farbe vom Regenschirm-Icon als Variable für einfache Anpassung */
+:root {
+    --ecowitt-cyan: #00d1ff;
+}
+
+/* Der Hauptkreis mit den vielen kleinen Strichen (Ticks) */
 .compass-ring {
     fill: none;
-    stroke: #00d1ff;    /* Das Blau vom Regenschirm */
-    stroke-width: 3;    /* Etwas dicker für die Striche */
-    stroke-dasharray: 1, 6.85; /* Erzeugt 40 kleine Striche (Umfang / Striche) */
-    opacity: 0.8;
+    stroke: var(--ecowitt-cyan);
+    stroke-width: 2;
+    /* Erzeugt ca. 40 feine Teilstriche */
+    stroke-dasharray: 0.5, 6.55; 
+    opacity: 0.4;
 }
 
-/* Ein zweiter, dünner Innenkreis zur Orientierung */
+/* Ein zweiter, ganz feiner durchgehender Innenkreis */
 .compass-ring-inner {
     fill: none;
-    stroke: #00d1ff;
+    stroke: var(--ecowitt-cyan);
     stroke-width: 0.5;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
+/* Die 4 dicken Markierungen für N, O, S, W */
+.comp-tick-thick {
+    stroke: var(--ecowitt-cyan);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 1;
+}
+
+/* Der Windpfeil */
 .comp-arrow {
-    fill: #00d1ff;       /* Pfeil in der gleichen Farbe */
-    stroke: #00d1ff;
+    fill: var(--ecowitt-cyan);
+    stroke: var(--ecowitt-cyan);
     stroke-width: 1;
+    opacity: 1;
 }
 
+/* Die große Zahl in der Mitte */
 .comp-speed {
     fill: #ffffff;
     font-size: 24px;
@@ -37,6 +54,7 @@
     text-anchor: middle;
 }
 
+/* Die Einheit km/h */
 .comp-unit {
     fill: #aaaaaa;
     font-size: 10px;
