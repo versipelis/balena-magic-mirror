@@ -1,3 +1,7 @@
+:root {
+    --ecowitt-cyan: #00d1ff; /* Farbe basierend auf dem Regenschirm-Icon */
+}
+
 .weather-local {
     text-align: right;
     color: white;
@@ -7,20 +11,16 @@
     margin: 10px 0;
 }
 
-:root {
-    --ecowitt-cyan: #00d1ff;
-}
-
-/* Kleine Ticks - jetzt nur noch 1px breit */
+/* Die feinen Skalenstriche */
 .compass-ring {
     fill: none;
     stroke: var(--ecowitt-cyan);
     stroke-width: 1; 
     stroke-dasharray: 0.5, 6.55; 
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
-/* Innenkreis fast unsichtbar zur Orientierung */
+/* Der feine durchgehende Kreis */
 .compass-ring-inner {
     fill: none;
     stroke: var(--ecowitt-cyan);
@@ -28,26 +28,23 @@
     opacity: 0.2;
 }
 
-/* Die 4 langen Markierungen - ebenfalls nur 1px breit */
+/* Die 4 langen Hauptstriche */
 .comp-tick-long {
     stroke: var(--ecowitt-cyan);
     stroke-width: 1; 
-    stroke-linecap: butt;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
-/* Der Windpfeil - schlank und passend */
+/* Der Pfeil: Gleiche Farbe wie der Kreis, zentriert auf der Bahn */
 .comp-arrow {
     fill: var(--ecowitt-cyan);
-    stroke: var(--ecowitt-cyan);
-    stroke-width: 0.5;
     opacity: 1;
 }
 
 .comp-speed {
     fill: #ffffff;
     font-size: 24px;
-    font-weight: 300; /* Dünnere Schriftart */
+    font-weight: 300;
     text-anchor: middle;
 }
 
