@@ -20,45 +20,46 @@ var config = {
       }
     },
     {
-       module: "MMM-OpenWeatherMapForecast",
-       position: "top_right",
-       header: "Vorhersage Fornsbach",
-       config: {
-         apikey: "${OPENWEATHER_API_KEY}",
-         latitude: 48.980300,
-         longitude: 9.639666,
-         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
-         language: "de",
-         units: "metric",
-         
-         // --- LAYOUT FÜR 5 TAGE ---
-         forecastLayout: "table",
-         showCurrent: false,
-         showExtraCurrentDetails: false,
-         showSummary: false,
-         showHourly: false,
-         showDaily: true,
-         maxDays: 5,
-         maxDailiesToShow: 5,
-         
-         // --- DEAKTIVIERUNG DER STUNDEN ---
-         maxHourliesToShow: 0,
-         hourlyForecastInterval: 0,
-         
-         // --- DETAILS ---
-         showPrecipitationProbability: true,
-         showPrecipitationAmount: true,
-         showWindSpeed: true,
-         
-         // --- OPTIK ---
-         colored: true,
-         tableIconSize: 25
-       }
-     }
+      module: "MMM-OpenWeatherMapForecast",
+      position: "top_right",
+      header: "Vorhersage Fornsbach",
+      config: {
+        apikey: "${OPENWEATHER_API_KEY}",
+        latitude: 48.980300,
+        longitude: 9.639666,
+        endpoint: "https://api.openweathermap.org/data/3.0/onecall",
+        language: "de",
+        units: "metric",
+        
+        // --- WIND AUF KM/H UMSTELLEN ---
+        useKmhForWind: true, 
+
+        // --- DIESE KOMBINATION ERZWINGT DAS AUSBLENDEN OBEN ---
+        showCurrent: false,
+        showExtraCurrentDetails: false,
+        showSummary: false,
+        
+        // --- TABELLEN-LAYOUT ---
+        forecastLayout: "table",
+        showHourly: false,
+        showDaily: true,
+        maxDays: 5,
+        maxDailiesToShow: 5, // Sicherheitshalber für die 5 Tage
+
+        // --- DETAILS ---
+        showPrecipitationProbability: true,
+        showPrecipitationAmount: true,
+        showWindSpeed: true,
+        
+        colored: true,
+        tableIconSize: 25
+      }
+    }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
