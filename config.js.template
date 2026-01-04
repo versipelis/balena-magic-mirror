@@ -19,7 +19,7 @@ var config = {
         updateInterval: 30000
       }
     },
-    {
+   {
       module: "MMM-OpenWeatherMapForecast",
       position: "top_right",
       header: "Vorhersage Fornsbach",
@@ -30,38 +30,32 @@ var config = {
         endpoint: "https://api.openweathermap.org/data/3.0/onecall",
         language: "de",
         units: "metric",
-        
-        // --- WIND AUF KM/H (Modul-spezifisch) ---
-        useKMPH: true, 
-
-        // --- DIESE WERTE SCHALTEN DEN OBEREN TEIL AUS ---
-        showCurrent: false,
-        showExtraCurrentDetails: false,
-        showSummary: false,
-        
-        // --- STUNDEN-ANZEIGE KOMPLETT ELIMINIEREN ---
-        showHourly: false,
-        maxHourliesToShow: 0,   // Absolut notwendig, um 5pm, 8pm etc. zu löschen
-        
-        // --- 5-TAGE-TABELLE ---
-        showDaily: true,
-        maxDays: 5,
-        maxDailiesToShow: 5,
-        forecastLayout: "table",
-
+    
+        // --- DIESE PARAMETER STEUERN DAS AUSBLENDEN OBEN (gemäß deiner Liste) ---
+        showCurrentConditions: false,      // Schaltet Icon/Temp oben aus
+        showExtraCurrentConditions: false, // Schaltet Wind/Regen oben aus
+        showSummary: false,                // Schaltet den Wettertext aus
+    
+        // --- TABELLEN-LAYOUT FÜR 5 TAGE ---
+        forecastLayout: "table",           //
+        showHourlyForecast: false,         // Schaltet Stunden aus
+        showDailyForecast: true,           // Aktiviert die Tagesliste
+        maxDailiesToShow: 5,               // Erhöht auf 5 Tage
+    
         // --- DETAILS ---
-        showPrecipitationProbability: true,
-        showPrecipitationAmount: true,
-        showWindSpeed: true,
-        
-        colored: true,
-        tableIconSize: 25
+        showPrecipitation: true,           // Zeigt Regen-Infos
+        showWind: true,                    // Zeigt Wind-Infos
+        concise: false,                    // Auf false setzen, um mehr Details (mm) zu sehen
+    
+        // --- OPTIK ---
+        colored: true                      //
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
