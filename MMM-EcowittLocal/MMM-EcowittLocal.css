@@ -1,27 +1,32 @@
 .weather-local {
-    text-align: right; /* Passend zu top_right */
+    text-align: right;
+    color: white;
 }
 
 .compass-container {
     margin: 10px 0;
 }
 
+/* Der Hauptkreis mit den Strichen */
 .compass-ring {
     fill: none;
-    stroke: #ffffff; /* Weißer Ring für den Spiegel-Look */
-    stroke-width: 1;
-    opacity: 0.3;    /* Etwas dezenter */
+    stroke: #00d1ff;    /* Das Blau vom Regenschirm */
+    stroke-width: 3;    /* Etwas dicker für die Striche */
+    stroke-dasharray: 1, 6.85; /* Erzeugt 40 kleine Striche (Umfang / Striche) */
+    opacity: 0.8;
 }
 
-.comp-label {
-    fill: #999;
-    font-size: 10px;
-    text-anchor: middle;
+/* Ein zweiter, dünner Innenkreis zur Orientierung */
+.compass-ring-inner {
+    fill: none;
+    stroke: #00d1ff;
+    stroke-width: 0.5;
+    opacity: 0.3;
 }
 
 .comp-arrow {
-    fill: #ff3333;   /* Kräftiges Rot für den Zeiger */
-    stroke: #ff3333;
+    fill: #00d1ff;       /* Pfeil in der gleichen Farbe */
+    stroke: #00d1ff;
     stroke-width: 1;
 }
 
