@@ -31,20 +31,23 @@ var config = {
         language: "de",
         units: "metric",
         
-        // --- WIND AUF KM/H UMSTELLEN ---
-        useKmhForWind: true, 
+        // --- WIND AUF KM/H (Modul-spezifisch) ---
+        useKMPH: true, 
 
-        // --- DIESE KOMBINATION ERZWINGT DAS AUSBLENDEN OBEN ---
+        // --- DIESE WERTE SCHALTEN DEN OBEREN TEIL AUS ---
         showCurrent: false,
         showExtraCurrentDetails: false,
         showSummary: false,
         
-        // --- TABELLEN-LAYOUT ---
-        forecastLayout: "table",
+        // --- STUNDEN-ANZEIGE KOMPLETT ELIMINIEREN ---
         showHourly: false,
+        maxHourliesToShow: 0,   // Absolut notwendig, um 5pm, 8pm etc. zu löschen
+        
+        // --- 5-TAGE-TABELLE ---
         showDaily: true,
         maxDays: 5,
-        maxDailiesToShow: 5, // Sicherheitshalber für die 5 Tage
+        maxDailiesToShow: 5,
+        forecastLayout: "table",
 
         // --- DETAILS ---
         showPrecipitationProbability: true,
@@ -59,6 +62,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
