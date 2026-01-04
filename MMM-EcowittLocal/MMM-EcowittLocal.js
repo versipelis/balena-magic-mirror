@@ -1,7 +1,7 @@
 Module.register("MMM-EcowittLocal", {
     defaults: {
         deviceIP: "192.168.178.98",
-        updateInterval: 30000
+        updateInterval: 15000
     },
 
     getStyles: function() {
