@@ -32,7 +32,7 @@ module.exports = NodeHelper.create({
                 hum:  json.common_list.find(i => i.id === "0x07")?.val || "0%", // 69%
                 wind: parseVal("0x0B"), // Windgeschwindigkeit 0.00
                 gust: parseVal("0x0C"), // Böe 2.52
-                windDir: parseVal("0x6D") // Windrichtung 354 (Grad)
+                windDir: parseVal("0x0A") // Windrichtung 354 (Grad)
             };
             
             this.sendSocketNotification("DATA", result);
