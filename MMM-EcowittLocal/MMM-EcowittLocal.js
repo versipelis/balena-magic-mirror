@@ -38,8 +38,7 @@ Module.register("MMM-EcowittLocal", {
         var dir = this.dataLocal.windDir || 0;
         var speed = this.dataLocal.wind || 0;
 
-        // Der Pfeil liegt nun am Rand (y=5) und zeigt zur Mitte (y=20)
-        compassWrapper.innerHTML = `
+       compassWrapper.innerHTML = `
             <svg viewBox="0 0 100 100" width="120" height="120">
                 <circle cx="50" cy="50" r="45" class="compass-ring-inner" />
                 
@@ -51,7 +50,7 @@ Module.register("MMM-EcowittLocal", {
                 <line x1="5" y1="50" x2="15" y2="50" class="comp-tick-long" />
                 
                 <g transform="rotate(${dir}, 50, 50)">
-                    <path d="M50 24 L54 7 L46 7 Z" class="comp-arrow" />
+                    <path d="M50 54 L55 40 L45 40 Z" class="comp-arrow" />
                 </g>
                 
                 <text x="50" y="55" class="comp-speed">${speed}</text>
