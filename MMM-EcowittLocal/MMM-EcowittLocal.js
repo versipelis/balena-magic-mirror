@@ -38,23 +38,23 @@ Module.register("MMM-EcowittLocal", {
         var dir = this.dataLocal.windDir || 0;
         var speed = this.dataLocal.wind || 0;
 
-       compassWrapper.innerHTML = `
+        compassWrapper.innerHTML = `
             <svg viewBox="0 0 100 100" width="120" height="120">
                 <circle cx="50" cy="50" r="45" class="compass-ring-inner" />
                 
                 <circle cx="50" cy="50" r="45" class="compass-ring" transform="rotate(-90 50 50)" />
                 
-                <line x1="50" y1="5" x2="50" y2="15" class="comp-tick-long" />
-                <line x1="95" y1="50" x2="85" y2="50" class="comp-tick-long" />
-                <line x1="50" y1="95" x2="50" y2="85" class="comp-tick-long" />
-                <line x1="5" y1="50" x2="15" y2="50" class="comp-tick-long" />
+                <line x1="50" y1="5" x2="50" y2="18" class="comp-tick-long" />
+                <line x1="95" y1="50" x2="82" y2="50" class="comp-tick-long" />
+                <line x1="50" y1="95" x2="50" y2="82" class="comp-tick-long" />
+                <line x1="5" y1="50" x2="18" y2="50" class="comp-tick-long" />
                 
                 <g transform="rotate(${dir}, 50, 50)">
-                    <path d="M50 54 L55 40 L45 40 Z" class="comp-arrow" />
+                    <path d="M50 52 L56 38 L44 38 Z" class="comp-arrow" />
                 </g>
                 
-                <text x="50" y="55" class="comp-speed">${speed}</text>
-                <text x="50" y="72" class="comp-unit">km/h</text>
+                <text x="50" y="52" class="comp-speed">${speed}</text>
+                <text x="50" y="68" class="comp-unit">km/h</text>
             </svg>
         `;
         wrapper.appendChild(compassWrapper);
