@@ -39,7 +39,7 @@ var config = {
          showHourly: false,
          showDaily: true,
          maxDays: 5,
-         maxDailiesToShow: 5
+         maxDailiesToShow: 5,
          
          // --- DEAKTIVIERUNG DER STUNDEN ---
          maxHourliesToShow: 0,
@@ -59,6 +59,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
