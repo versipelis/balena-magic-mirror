@@ -41,15 +41,11 @@ var config = {
         showExtraCurrentConditions: false,
         showSummary: false,
 
-        // --- NEU: STÜNDLICHE ANZEIGE AKTIVIEREN ---
-        showHourlyForecast: true,       // Auf true setzen
-        maxHourliesToShow: 3,           // Nur die nächsten 3 Stunden anzeigen
-        hourlyForecastLayout: "table", // "table" passt gut zur Tagesansicht
-
         // --- 5-TAGE-TABELLE ---
         forecastLayout: "table",
-        showHourlyForecast: false,
+        showHourlyForecast: true,
         showDailyForecast: true,
+        maxHourliesToShow: 3,
         maxDailiesToShow: 5,
 
         // --- WEITERE DETAILS ---
