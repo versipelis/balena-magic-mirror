@@ -1,10 +1,25 @@
 version: '2.1'
 
 services:
+  # --- NEU: Audio-Schnittstelle für den WM8960 ---
+  audio:
+    image: balenablocks/audio
+    privileged: true
+
   magicmirror:
     build: .
     restart: always
     network_mode: host
+    privileged: true # Benötigt für Zugriff auf Hardware-Schnittstellen
+    depends_on:
+      - audio
+    environment:
+      # Verbindet den MagicMirror mit dem Audio-Dienst
+      - PULSE_SERVER=tcp:localhost:4317
+    devices:
+      - "/dev/snd:/dev/snd"
+      - "/dev/i2c-1:/dev/i2c-1" # Steuerung für Lautstärke/Mixer des WM8960
+
   browser:
     image: balenablocks/browser
     privileged: true
@@ -12,5 +27,3 @@ services:
     environment:
       LAUNCH_URL: 'http://localhost:8080'
       KIOSK: '1'
-
-  # wifi-connect haben wir hier entfernt, um die Verbindung stabil zu halten
