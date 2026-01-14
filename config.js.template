@@ -19,7 +19,7 @@ var config = {
         updateInterval: 30000
       }
     },
-   {
+    {
       module: "MMM-OpenWeatherMapForecast",
       position: "top_right",
       header: "Vorhersage Fornsbach",
@@ -54,11 +54,26 @@ var config = {
         colored: true,
         tableIconSize: 25
       }
+    },
+    {
+      module: "MMM-TouchPlayerBasic",
+      position: "bottom_left", // Passt gut unten links als Gegenpol zur Uhr
+      header: "Musik Player",
+      config: {
+        musicPath: "modules/MMM-TouchPlayerBasic/music", // Pfad im Container
+        autoStart: false,
+        showCover: true,
+        showTimeline: true,
+        updateInterval: 1000,
+        // Da wir balena-audio nutzen, erkennt das System 
+        // die Soundkarte automatisch als Standard-Ausgang.
+      }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
