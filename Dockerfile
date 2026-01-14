@@ -1,7 +1,10 @@
 FROM balenalib/raspberrypi3-node:18-bookworm-run
 
-# gettext-base für envsubst (Template-System)
-RUN apt-get update && apt-get install -y git wget curl unzip dos2unix python3 build-essential gettext-base && rm -rf /var/lib/apt/lists/*
+# --- UPDATE: Audio-Pakete hinzugefügt (pulseaudio-utils, alsa-utils, mpg123, mplayer) ---
+RUN apt-get update && apt-get install -y \
+    git wget curl unzip dos2unix python3 build-essential gettext-base \
+    pulseaudio-utils alsa-utils mpg123 mplayer \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
@@ -11,19 +14,19 @@ RUN curl -L https://github.com/MichMich/MagicMirror/archive/refs/tags/v2.25.0.ta
 # Core-Abhängigkeiten installieren
 RUN npm install --include=dev
 
-# --- NEU: MMM-OpenWeatherMapForecast (MarcLandis) laden ---
+# --- MMM-OpenWeatherMapForecast laden ---
 RUN mkdir -p modules/MMM-OpenWeatherMapForecast && \
     curl -L https://github.com/MarcLandis/MMM-OpenWeatherMapForecast/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-OpenWeatherMapForecast --strip-components=1
+RUN cd modules/MMM-OpenWeatherMapForecast && npm install --omit=dev
 
-# Abhängigkeiten für das neue Wetter-Modul installieren
-RUN cd modules/MMM-OpenWeatherMapForecast && \
-    npm install --omit=dev
+# --- NEU: MMM-TouchPlayerBasic laden ---
+RUN mkdir -p modules/MMM-TouchPlayerBasic && \
+    curl -L https://github.com/brobergp/MMM-TouchPlayerBasic/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-TouchPlayerBasic --strip-components=1
+# Dieses Modul braucht meist kein npm install, da es interne Player nutzt.
 
 # --- MMM-FOSHKplugin laden ---
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
     curl -L https://github.com/git-olicat/MMM-FOSHKplugin-PWS-Observations/archive/refs/heads/main.tar.gz | tar xz -C modules/MMM-FOSHKplugin-PWS-Observations --strip-components=1
-
-# FEHLERBEHEBUNG: 'request' manuell im Modul-Ordner installieren
 RUN cd modules/MMM-FOSHKplugin-PWS-Observations && \
     npm install request && \
     npm install --omit=dev
