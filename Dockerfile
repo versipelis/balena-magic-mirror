@@ -22,13 +22,17 @@ RUN cd modules/MMM-OpenWeatherMapForecast && npm install --omit=dev
 # --- NEU: MMM-TouchPlayerBasic laden ---
 RUN mkdir -p modules/MMM-TouchPlayerBasic && \
     curl -L https://github.com/brobergp/MMM-TouchPlayerBasic/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-TouchPlayerBasic --strip-components=1
-# Dieses Modul braucht meist kein npm install, da es interne Player nutzt.
 
-# Stream-Verzeichnis erstellen
-RUN mkdir -p modules/MMM-TouchPlayerBasic/streams
+# WICHTIG: Das Modul erwartet "stations" und "images" Ordner
+RUN mkdir -p modules/MMM-TouchPlayerBasic/stations && \
+    mkdir -p modules/MMM-TouchPlayerBasic/images
 
-# Playlist kopieren
-COPY streams.m3u modules/MMM-TouchPlayerBasic/streams/
+# Kopiere Scripts in "stations" Ordner (nicht "scriptfiles"!)
+COPY radio-scripts/*.sh modules/MMM-TouchPlayerBasic/stations/
+RUN chmod +x modules/MMM-TouchPlayerBasic/stations/*.sh
+
+# Kopiere Logos in "images" Ordner (nicht "pictures"!)
+COPY radio-logos/*.png modules/MMM-TouchPlayerBasic/images/ 2>/dev/null || true
 
 # --- MMM-FOSHKplugin laden ---
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
