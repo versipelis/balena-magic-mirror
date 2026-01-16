@@ -57,45 +57,22 @@ var config = {
     },
     {
       module: "MMM-TouchPlayerBasic",
-      position: "bottom_center",
-      header: "Web Radio",
+      position: "bottom_left",
       config: {
-        // WEBRADIO MODUS aktivieren
-        streamUrl: true,  // WICHTIG: Aktiviert Webradio statt lokaler Dateien
-        
-        // Radiosender definieren
+        // Format: "LOGO-NAME scriptname"
+        // LOGO-NAME = PNG-Datei in images/ (ohne .png)
+        // scriptname = SH-Datei in stations/ (ohne .sh)
         stations: [
-          {
-            title: "SWR3",
-            url: "https://liveradio.swr.de/sw282p3/swr3/play.mp3",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/SWR3_logo_2012.svg/200px-SWR3_logo_2012.svg.png"
-          },
-          {
-            title: "Antenne 1",
-            url: "https://stream.antenne1.de/a1stg/livestream2.mp3",
-            logo: "https://www.antenne.de/fileadmin/user_upload/antenne1/images/logo.png"
-          },
-          {
-            title: "bigFM",
-            url: "https://streams.bigfm.de/bigfm-deutschland-128-mp3",
-            logo: "https://www.bigfm.de/sites/default/files/styles/image_1200x630/public/2021-07/bigfm_logo.png"
-          }
-        ],
-        
-        // Player Einstellungen
-        autoStart: false,        // Nicht automatisch starten
-        showCover: true,         // Sender-Logos anzeigen
-        showTimeline: false,     // Bei Webradio nicht nötig
-        showControls: true,      // Play/Pause/Stop Buttons
-        showVolume: true,        // Lautstärke-Regler
-        initialVolume: 50,       // Start-Lautstärke
-        updateInterval: 1000     // Update-Intervall
+          "swr3 swr3",        // Verwendet R.png und swr3.sh
+          "antenne1 antenne1",    // Verwendet R.png und antenne1.sh
+          "bigfm bigfm"       // Verwendet R.png und bigfm.sh
+        ]
       }
-    }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
