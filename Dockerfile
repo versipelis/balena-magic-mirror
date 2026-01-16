@@ -24,6 +24,12 @@ RUN mkdir -p modules/MMM-TouchPlayerBasic && \
     curl -L https://github.com/brobergp/MMM-TouchPlayerBasic/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-TouchPlayerBasic --strip-components=1
 # Dieses Modul braucht meist kein npm install, da es interne Player nutzt.
 
+# Stream-Verzeichnis erstellen
+RUN mkdir -p modules/MMM-TouchPlayerBasic/streams
+
+# Playlist kopieren
+COPY streams.m3u modules/MMM-TouchPlayerBasic/streams/
+
 # --- MMM-FOSHKplugin laden ---
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
     curl -L https://github.com/git-olicat/MMM-FOSHKplugin-PWS-Observations/archive/refs/heads/main.tar.gz | tar xz -C modules/MMM-FOSHKplugin-PWS-Observations --strip-components=1
