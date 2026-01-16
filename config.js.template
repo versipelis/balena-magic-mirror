@@ -69,7 +69,7 @@ var config = {
             title: "SWR3",
             url: "https://liveradio.swr.de/sw282p3/swr3/play.mp3",
             logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/SWR3_logo_2012.svg/200px-SWR3_logo_2012.svg.png"
-          }
+          },
           {
             title: "Antenne 1",
             url: "https://stream.antenne1.de/a1stg/livestream2.mp3",
@@ -96,6 +96,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
