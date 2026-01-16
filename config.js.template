@@ -63,9 +63,9 @@ var config = {
         // LOGO-NAME = PNG-Datei in images/ (ohne .png)
         // scriptname = SH-Datei in stations/ (ohne .sh)
         stations: [
-          "swr3 swr3",        // Verwendet R.png und swr3.sh
-          "antenne1 antenne1",    // Verwendet R.png und antenne1.sh
-          "bigfm bigfm"       // Verwendet R.png und bigfm.sh
+          "R swr3",        // Verwendet R.png und swr3.sh
+          "R antenne1",    // Verwendet R.png und antenne1.sh
+          "R bigfm"       // Verwendet R.png und bigfm.sh
         ]
       }
     }
@@ -73,6 +73,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
