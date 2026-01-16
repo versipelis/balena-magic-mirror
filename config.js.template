@@ -68,10 +68,12 @@ var config = {
           "bigfm bigfm"       // Verwendet R.png und bigfm.sh
         ]
       }
+    }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
