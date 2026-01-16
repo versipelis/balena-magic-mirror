@@ -66,13 +66,16 @@ var config = {
           "R swr3",        // Verwendet R.png und swr3.sh
           "R antenne1",    // Verwendet R.png und antenne1.sh
           "R bigfm"       // Verwendet R.png und bigfm.sh
-        ]
+        ],
+        maxWidth: "100%",          // Volle Breite nutzen
+        animationSpeed: 1000
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
