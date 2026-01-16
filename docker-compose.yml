@@ -1,25 +1,37 @@
 version: '2.1'
-
 services:
-  # --- NEU: Audio-Schnittstelle für den WM8960 ---
+  # --- Audio Init für WM8960 Mixer-Konfiguration ---
+  audio-init:
+    build: ./audio-init
+    privileged: true
+    devices:
+      - "/dev/snd:/dev/snd"
+      - "/dev/i2c-1:/dev/i2c-1"
+    restart: always
+
+  # --- Balena Audio Block ---
   audio:
     image: balenablocks/audio
     privileged: true
+    depends_on:
+      - audio-init
 
+  # --- MagicMirror ---
   magicmirror:
     build: .
     restart: always
     network_mode: host
-    privileged: true # Benötigt für Zugriff auf Hardware-Schnittstellen
+    privileged: true
     depends_on:
       - audio
+      - audio-init
     environment:
-      # Verbindet den MagicMirror mit dem Audio-Dienst
       - PULSE_SERVER=tcp:localhost:4317
     devices:
       - "/dev/snd:/dev/snd"
-      - "/dev/i2c-1:/dev/i2c-1" # Steuerung für Lautstärke/Mixer des WM8960
+      - "/dev/i2c-1:/dev/i2c-1"
 
+  # --- Browser ---
   browser:
     image: balenablocks/browser
     privileged: true
