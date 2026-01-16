@@ -1,8 +1,7 @@
 #!/bin/bash
-# Parameter $1 = Stream-URL
+# Beende alle mpg123 Instanzen
+sudo killall mpg123 2>/dev/null
+sleep 0.1
 
-# Beende vorherige Instanzen
-pkill -9 mpg123 2>/dev/null
-
-# Starte Stream
+# Starte Stream mit übergebenem Parameter
 mpg123 "$1"
