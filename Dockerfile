@@ -19,22 +19,22 @@ RUN mkdir -p modules/MMM-OpenWeatherMapForecast && \
     curl -L https://github.com/MarcLandis/MMM-OpenWeatherMapForecast/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-OpenWeatherMapForecast --strip-components=1
 RUN cd modules/MMM-OpenWeatherMapForecast && npm install --omit=dev
 
-# --- NEU: MMM-TouchPlayerBasic laden ---
+# --- MMM-TouchPlayerBasic laden ---
 RUN mkdir -p modules/MMM-TouchPlayerBasic && \
     curl -L https://github.com/brobergp/MMM-TouchPlayerBasic/archive/refs/heads/master.tar.gz | tar xz -C modules/MMM-TouchPlayerBasic --strip-components=1
 
-# WICHTIG: Das Modul erwartet "stations" und "images" Ordner
+# Erstelle Verzeichnisse
 RUN mkdir -p modules/MMM-TouchPlayerBasic/stations && \
     mkdir -p modules/MMM-TouchPlayerBasic/images
 
-# Kopiere Scripts in "stations" Ordner (nicht "scriptfiles"!)
+# Kopiere KOMPLETTEN radio-logos Ordner
+COPY radio-logos/ modules/MMM-TouchPlayerBasic/images/
+
+# Kopiere Scripts
 COPY radio-scripts/*.sh modules/MMM-TouchPlayerBasic/stations/
 RUN chmod +x modules/MMM-TouchPlayerBasic/stations/*.sh
 
-# Kopiere Logos in "images" Ordner (nicht "pictures"!)
-COPY radio-logos/*.png modules/MMM-TouchPlayerBasic/images/ 2>/dev/null || true
-
-# Erlaube sudo killall ohne Passwort
+# Erlaube sudo ohne Passwort
 RUN echo "node ALL=(ALL) NOPASSWD: /usr/bin/killall" >> /etc/sudoers
 
 # --- MMM-FOSHKplugin laden ---
