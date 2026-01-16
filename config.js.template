@@ -57,22 +57,46 @@ var config = {
     },
     {
       module: "MMM-TouchPlayerBasic",
-      position: "bottom_left", // Passt gut unten links als Gegenpol zur Uhr
-      header: "Musik Player",
+      position: "bottom_center",
+      header: "Web Radio",
       config: {
-        musicPath: "modules/MMM-TouchPlayerBasic/music", // Pfad im Container
-        autoStart: false,
-        showCover: true,
-        showTimeline: true,
-        updateInterval: 1000,
-        // Da wir balena-audio nutzen, erkennt das System 
-        // die Soundkarte automatisch als Standard-Ausgang.
+        // WEBRADIO MODUS aktivieren
+        streamUrl: true,  // WICHTIG: Aktiviert Webradio statt lokaler Dateien
+        
+        // Radiosender definieren
+        stations: [
+          {
+            title: "SWR3",
+            url: "https://liveradio.swr.de/sw282p3/swr3/play.mp3",
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/SWR3_logo_2012.svg/200px-SWR3_logo_2012.svg.png"
+          }
+          {
+            title: "Antenne 1",
+            url: "https://stream.antenne1.de/a1stg/livestream2.mp3",
+            logo: "https://www.antenne.de/fileadmin/user_upload/antenne1/images/logo.png"
+          },
+          {
+            title: "bigFM",
+            url: "https://streams.bigfm.de/bigfm-deutschland-128-mp3",
+            logo: "https://www.bigfm.de/sites/default/files/styles/image_1200x630/public/2021-07/bigfm_logo.png"
+          }
+        ],
+        
+        // Player Einstellungen
+        autoStart: false,        // Nicht automatisch starten
+        showCover: true,         // Sender-Logos anzeigen
+        showTimeline: false,     // Bei Webradio nicht nötig
+        showControls: true,      // Play/Pause/Stop Buttons
+        showVolume: true,        // Lautstärke-Regler
+        initialVolume: 50,       // Start-Lautstärke
+        updateInterval: 1000     // Update-Intervall
       }
     }
   ]
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
