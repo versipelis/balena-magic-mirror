@@ -34,6 +34,9 @@ RUN chmod +x modules/MMM-TouchPlayerBasic/stations/*.sh
 # Kopiere Logos in "images" Ordner (nicht "pictures"!)
 COPY radio-logos/*.png modules/MMM-TouchPlayerBasic/images/ 2>/dev/null || true
 
+# Erlaube sudo killall ohne Passwort
+RUN echo "node ALL=(ALL) NOPASSWD: /usr/bin/killall" >> /etc/sudoers
+
 # --- MMM-FOSHKplugin laden ---
 RUN mkdir -p modules/MMM-FOSHKplugin-PWS-Observations && \
     curl -L https://github.com/git-olicat/MMM-FOSHKplugin-PWS-Observations/archive/refs/heads/main.tar.gz | tar xz -C modules/MMM-FOSHKplugin-PWS-Observations --strip-components=1
