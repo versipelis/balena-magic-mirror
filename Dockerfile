@@ -34,6 +34,10 @@ COPY radio-logos/ modules/MMM-TouchPlayerBasic/images/
 COPY radio-scripts/*.sh modules/MMM-TouchPlayerBasic/stations/
 RUN chmod +x modules/MMM-TouchPlayerBasic/stations/*.sh
 
+# WICHTIG: Passe node_helper.js Pfade an
+RUN sed -i 's|/home/pi/MagicMirror|/usr/src/app|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
+    sed -i 's|scriptfiles|stations|g' modules/MMM-TouchPlayerBasic/node_helper.js
+
 # Erlaube sudo ohne Passwort
 RUN echo "node ALL=(ALL) NOPASSWD: /usr/bin/killall" >> /etc/sudoers
 
