@@ -17,7 +17,7 @@ var config = {
       config: {
         stationUrl: "http://192.168.178.98/get_livedata_info",
         updateInterval: 30000,
-        displayMode: "wind"  // Nur Wind-Modul
+        displayMode: "all"  // Nur Wind-Modul
       }
     },
     {
@@ -76,6 +76,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
