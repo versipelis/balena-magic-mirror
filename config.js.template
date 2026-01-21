@@ -15,8 +15,9 @@ var config = {
       position: "top_right",
       header: "Live vom Dach",
       config: {
-        deviceIP: "192.168.178.98",
-        updateInterval: 30000
+        stationUrl: "http://192.168.178.98/get_livedata_info",
+        updateInterval: 30000,
+        displayMode: "wind"  // Nur Wind-Modul
       }
     },
     {
@@ -75,6 +76,7 @@ var config = {
 };
 
 if (typeof module !== "undefined") { module.exports = config; }
+
 
 
 
