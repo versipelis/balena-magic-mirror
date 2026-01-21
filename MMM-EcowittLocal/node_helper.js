@@ -1,43 +1,42 @@
 const NodeHelper = require("node_helper");
+const http = require("http");
+const https = require("https");
 
 module.exports = NodeHelper.create({
     start: function() {
-        console.log("Ecowitt helper started (WS90 Mode)...");
+        console.log("Starting node helper for: " + this.name);
     },
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === "CONFIG") {
-            this.config = payload;
-            this.getData();
-            setInterval(() => {
-                this.getData();
-            }, this.config.updateInterval);
+        if (notification === "GET_WEATHER_DATA") {
+            this.getWeatherData(payload.url);
         }
     },
 
-    getData: async function() {
-        const url = `http://${this.config.deviceIP}/get_livedata_info`;
-        try {
-            const response = await fetch(url);
-            const json = await response.json();
-            
-            // Hilfsfunktion um " km/h" oder "C" aus dem String zu entfernen
-            const parseVal = (id) => {
-                const item = json.common_list.find(i => i.id === id);
-                return item ? parseFloat(item.val) : 0;
-            };
+    getWeatherData: function(url) {
+        const self = this;
+        const protocol = url.startsWith('https') ? https : http;
 
-            const result = {
-                temp: parseVal("0x02"), // 0.5
-                hum:  json.common_list.find(i => i.id === "0x07")?.val || "0%", // 69%
-                wind: parseVal("0x0B"), // Windgeschwindigkeit 0.00
-                gust: parseVal("0x0C"), // Böe 2.52
-                windDir: parseVal("0x0A") // Windrichtung 354 (Grad)
-            };
-            
-            this.sendSocketNotification("DATA", result);
-        } catch (error) {
-            console.error("Ecowitt Fetch Error:", error);
-        }
+        protocol.get(url, (resp) => {
+            let data = '';
+
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            resp.on('end', () => {
+                try {
+                    const jsonData = JSON.parse(data);
+                    self.sendSocketNotification("WEATHER_DATA", jsonData);
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                    self.sendSocketNotification("WEATHER_ERROR", error.message);
+                }
+            });
+
+        }).on("error", (err) => {
+            console.error("Error fetching weather data:", err.message);
+            self.sendSocketNotification("WEATHER_ERROR", err.message);
+        });
     }
 });
