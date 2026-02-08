@@ -37,9 +37,9 @@ RUN chmod +x modules/MMM-TouchPlayerBasic/stations/*.sh
 # Passe node_helper.js Pfade und Controls an
 RUN sed -i 's|/home/pi/MagicMirror|/usr/src/app|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
     sed -i 's|scriptfiles|stations|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
-    sed -i 's|amixer -q sset Master 3%+|amixer -c 0 sset Speaker 5%+ \&\& amixer -c 0 sset Playback 5%+|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
-    sed -i 's|amixer -q sset Master 3%-|amixer -c 0 sset Speaker 5%- \&\& amixer -c 0 sset Playback 5%-|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
-    sed -i 's|amixer -q sset Master toggle|amixer -c 0 sset Speaker toggle|g' modules/MMM-TouchPlayerBasic/node_helper.js && \
+    sed -i 's/amixer -q sset Master 3%+/amixer -c 0 sset Playback 2%+/g' modules/MMM-TouchPlayerBasic/node_helper.js && \
+    sed -i 's/amixer -q sset Master 3%-/amixer -c 0 sset Playback 2%-/g' modules/MMM-TouchPlayerBasic/node_helper.js && \
+    sed -i 's/amixer -q sset Master toggle/amixer -c 0 sset Playback toggle/g' modules/MMM-TouchPlayerBasic/node_helper.js
     sed -i 's|sudo killall mpg123|pkill -f mpg123|g' modules/MMM-TouchPlayerBasic/node_helper.js
     
 # Erlaube sudo ohne Passwort
